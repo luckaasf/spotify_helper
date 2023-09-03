@@ -97,7 +97,6 @@ function populateUI(profile) {
         // show the profile picture in the navbar
         const imgElement = document.querySelector(".profile_image");
         imgElement.src = profileImage.src;
-        console.log(imgElement.src);
         imgElement.alt = "Your profile picture.";
     }
 }

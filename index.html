@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="src/style/style.css" >
         <script src="src/scripts/script.js" type="module"></script>
+        <script src="src/scripts/get_genres.js" type="module"></script>
     </head>
     <body class="bg-dark" style="font-family: 'Arial', sans-serif;">
         
@@ -18,5 +19,35 @@
             </a>
         </div>
     </nav>
+
+    
+    <!--form for the new playlist
+        - name
+        - description
+        - public (true if public and false if private)
+        response -> id (spotify id, later used for adding tracks to the playlist)
+        --------------------------------------------------------------------------
+        - after creating we add tracks to it
+        - uris -> list of tracks
+        - position -> always 0 in this case 
+        --------------------------------------------------------------------------
+        - genres
+        - number of tracks (max 100)
+        - rating
+    -->
+    <div class="container" >
+        <form>
+            <div class="row g-3">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Playlist name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="genre_id" placeholder="Genre">
+                </div>
+            </div>
+        </form>
+        <div id="genre_results"></div>
+    </div>
+
     </body>
 </html>
