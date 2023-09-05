@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="src/style/style.css" >
         <script src="src/scripts/script.js" type="module"></script>
         <script src="src/scripts/get_genres.js" type="module"></script>
+        <script src="src/scripts/track_counter.js"></script>
     </head>
     <body class="bg-dark" style="font-family: 'Arial', sans-serif;">
         
@@ -35,7 +36,7 @@
         - number of tracks (max 100)
         - rating
     -->
-    <div class="container" >
+    <div class="container">
         <form>
             <div class="row g-3">
                 <div class="col">
@@ -44,6 +45,15 @@
                 <div class="col">
                     <input type="text" class="form-control" id="genre_id" placeholder="Genre">
                     <div id="genre_results"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    <label for="customRange" class="form-label text-light">Number of tracks: <span id="number_tracks"></span></label>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <input type="range" class="form-range" value="0" min="0" max="100" id="customRange">
                 </div>
             </div>
         </form>

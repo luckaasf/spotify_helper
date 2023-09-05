@@ -27,7 +27,6 @@ const genre_results = document.getElementById("genre_results");
 genre_search.addEventListener('input', async () => {
     const searchbox_content = genre_search.value.trim();
     const filtered = await filteredGenres(searchbox_content);
-    console.log(filtered);
     showFilteredGenres(filtered);
 });
 
