@@ -44,7 +44,7 @@
                 </div>
                 <div class="col">
                     <input type="text" class="form-control" id="genre_id" placeholder="Genre">
-                    <div id="genre_results"></div>
+                    <div id="genre_results" class="dropdown-menu" aria-labelledby="genre_id"></div>
                 </div>
             </div>
             <div class="row">
@@ -54,6 +54,13 @@
                 <div class="col-1"></div>
                 <div class="col-10">
                     <input type="range" class="form-range" value="0" min="0" max="100" id="customRange">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Description" id="description"></textarea>
+                    </div>
                 </div>
             </div>
         </form>
