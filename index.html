@@ -7,7 +7,8 @@
         <link rel="stylesheet" type="text/css" href="src/style/style.css" >
         <script src="src/scripts/script.js" type="module"></script>
         <script src="src/scripts/get_genres.js" type="module"></script>
-        <script src="src/scripts/track_counter.js"></script>
+        <script src="src/scripts/track_counter.js" type="module"></script>
+        <script src="src/scripts/create_playlist.js" type="module"></script>
     </head>
     <body class="bg-dark" style="font-family: 'Arial', sans-serif;">
         
@@ -37,13 +38,13 @@
         - rating
     -->
     <div class="container">
-        <form>
+        <form method="post" id="create_form">
             <div class="row g-3">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Playlist name">
+                    <input type="text" class="form-control" placeholder="Playlist name" name="playlist_name" id="playlist_id">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" id="genre_id" placeholder="Genre">
+                    <input type="text" class="form-control" id="genre_id" placeholder="Genre" name="genre_name">
                     <div id="genre_results" class="dropdown-menu" aria-labelledby="genre_id"></div>
                 </div>
             </div>
@@ -53,13 +54,26 @@
                 </div>
                 <div class="col-1"></div>
                 <div class="col-10">
-                    <input type="range" class="form-range" value="0" min="0" max="100" id="customRange">
+                    <input type="range" class="form-range" value="0" min="0" max="100" id="customRange" name="track_number">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Description" id="description"></textarea>
+                    <textarea class="form-control" placeholder="Description" name="description_name" id="description_id" placeholder="Description"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="playlist_public_id">
+                        <label class="form-check-label text-light" for="playlist_public_id">Public playlist</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-success" id="create_button">Create Playlist</button>
                     </div>
                 </div>
             </div>

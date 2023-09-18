@@ -32,7 +32,7 @@ export async function redirectToAuthCodeFlow(clientId) {
     params.append("client_id", clientId);
     params.append("response_type", "code");
     params.append("redirect_uri", "http://localhost:5173/callback");
-    params.append("scope", "user-read-private user-read-email");
+    params.append("scope", "user-read-private user-read-email playlist-modify-public playlist-modify-private");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
 
@@ -93,6 +93,7 @@ function populateUI(profile) {
         const profileImage = new Image(100, 100);
         profileImage.src = profile.images[0].url;
         document.getElementById("avatar").appendChild(profileImage);
+        localStorage.setItem("user_id", profile.id);
 
         // show the profile picture in the navbar
         const imgElement = document.querySelector(".profile_image");
