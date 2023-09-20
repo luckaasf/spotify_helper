@@ -1,7 +1,7 @@
 # Playlist randomizer
 
-## goal: create a random playlist (100 tracks max) based on a users form (genre, rating, etc...)
+## goal: create a random playlist (100 tracks max) based on a selected genre
 
-### look for the [tutorial](https://developer.spotify.com/documentation/web-api/howtos/web-app-profile) made by the spotify developers
+### [tutorial](https://developer.spotify.com/documentation/web-api/howtos/web-app-profile)
 
 ### bootstrap for css
