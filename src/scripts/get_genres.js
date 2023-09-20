@@ -50,8 +50,6 @@ function showFilteredGenres(filteredGenres) {
     genreItem.type = "button";
     genreItem.textContent = genre;
 
-    console.log(genreItem);
-
     genreItem.addEventListener("mousedown", () => {
       genre_search.value = genre;
     });
