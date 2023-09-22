@@ -100,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
     async function fetchTracks(genre, offset, limit) {
         let tracksList = [];
 
-        // itll call the api 10 times
         for (let apiRequestCount = 0; apiRequestCount < 19; apiRequestCount++) {
             updateStatus("Searching for songs...");
             const headers = {
