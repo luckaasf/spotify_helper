@@ -1,3 +1,5 @@
+import { isValid } from './validations.js';
+
 document.addEventListener("DOMContentLoaded", function() {
     const token = localStorage.getItem("access_token");
     const user_id = localStorage.getItem("user_id");
@@ -10,20 +12,57 @@ document.addEventListener("DOMContentLoaded", function() {
         const genre = document.getElementById("genre_id").value;
         const tracksNumber = +document.getElementById("customRange").value;
 
-        console.log("playlist name: ", playlistNameValue);
-        console.log("description; ", descriptionValue);
-        console.log("isPublic: ", isPublicValue);
-        console.log("genre: ", genre);
-        console.log("tracksNumber: ", tracksNumber);
+        if (!isValid()) {
+            return;
+        }
 
-        //const spotify_id = await createPlaylist(user_id, playlistNameValue, descriptionValue, isPublicValue);
+        const spotify_id = await createPlaylist(user_id, playlistNameValue, descriptionValue, isPublicValue);
+
+        if (tracksNumber === 0) {
+            return;
+        }
 
         let offset = 0;
         const limit = defineLimit(tracksNumber);
         let tracksList = await fetchTracks(genre, offset, limit);
         const selectedTracks = await selectRandomTracks(tracksList, tracksNumber);
         console.log("list of tracks: ", selectedTracks);
+
+        addTracksToPlaylist(selectedTracks, spotify_id);
     })
+
+    async function addTracksToPlaylist(tracksList, spotify_id) {
+        const headers = {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+        }
+
+        const body = JSON.stringify({
+           "uris": tracksList,
+           "position": 0, 
+        });
+
+        try {
+            const response = await fetch(
+                `https://api.spotify.com/v1/playlists/${spotify_id}/tracks`,
+                {
+                    method: "POST",
+                    headers: headers,
+                    body: body,
+                }
+            );
+
+            if (response.ok) {
+                const data = await response.json();
+                updateStatus("Playlist created");
+                console.log("success, data: ", data);
+            } else {
+                console.log("error in the response");
+            }
+        } catch (error) {
+            console.log("error in the request, ", error);
+        }
+    }
 
     async function createPlaylist(user_id, playlistNameValue, descriptionValue, isPublicValue) {
         const body = JSON.stringify({
@@ -62,7 +101,8 @@ document.addEventListener("DOMContentLoaded", function() {
         let tracksList = [];
 
         // itll call the api 10 times
-        for (let apiRequestCount = 0; apiRequestCount < 10; apiRequestCount++) {
+        for (let apiRequestCount = 0; apiRequestCount < 19; apiRequestCount++) {
+            updateStatus("Searching for songs...");
             const headers = {
                 "Authorization": `Bearer ${token}`,
             }
@@ -84,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         if (data.tracks && data.tracks.items) {
                             console.log(data.tracks.items);
                             for (let i = 0; i < data.tracks.items.length; i++) {
-                                tracksList.push(data.tracks.items[i].name);
+                                tracksList.push(data.tracks.items[i].uri);
                             }
                         } else {
                             console.log("no tracks found");
@@ -123,6 +163,12 @@ document.addEventListener("DOMContentLoaded", function() {
     function selectRandomTracks(tracksList, tracksNumber) {
         const shuffledTracks = tracksList.sort(() => 0.5 - Math.random());
         return shuffledTracks.slice(0, tracksNumber);
+    }
+
+    function updateStatus(message) {
+        const status = document.getElementById("status");
+        status.className = "text-light text-center";
+        status.textContent = message;
     }
 });
 

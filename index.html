@@ -9,6 +9,7 @@
         <script src="src/scripts/get_genres.js" type="module"></script>
         <script src="src/scripts/track_counter.js" type="module"></script>
         <script src="src/scripts/create_playlist.js" type="module"></script>
+        <script src="src/scripts/validations.js" type="module"></script>
     </head>
     <body class="bg-dark" style="font-family: 'Arial', sans-serif;">
         
@@ -22,21 +23,6 @@
         </div>
     </nav>
 
-    
-    <!--form for the new playlist
-        - name
-        - description
-        - public (true if public and false if private)
-        response -> id (spotify id, later used for adding tracks to the playlist)
-        --------------------------------------------------------------------------
-        - after creating we add tracks to it
-        - uris -> list of tracks
-        - position -> always 0 in this case 
-        --------------------------------------------------------------------------
-        - genres
-        - number of tracks (max 100)
-        - rating
-    -->
     <div class="container">
         <form method="post" id="create_form">
             <div class="row g-3">
@@ -75,6 +61,11 @@
                     <div class="d-grid gap-2">
                         <button type="button" class="btn btn-outline-success" id="create_button">Create Playlist</button>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="status"></div>
                 </div>
             </div>
         </form>

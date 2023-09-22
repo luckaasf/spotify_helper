@@ -60,4 +60,3 @@ function showFilteredGenres(filteredGenres) {
   genre_results.style.display = "block";
 }
 
-
