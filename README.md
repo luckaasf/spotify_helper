@@ -4,4 +4,4 @@
 
 ## Create a random playlist based on a selected genre
 
-### TODO: improve css and make some validations, add weekly songs to the sample of tracks to make it more random maybe, use third party apis to have more tracks to the sample
+### TODO: improve css and make some extra validations, add weekly songs to the tracks sample, use a third party apis to add even more tracks to the sample
