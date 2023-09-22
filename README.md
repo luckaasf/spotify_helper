@@ -1,7 +1,7 @@
 # Playlist randomizer
 
-## goal: create a random playlist (100 tracks max) based on a selected genre
+### [Tutorial](https://developer.spotify.com/documentation/web-api/howtos/web-app-profile) made by the spotify developers for the initial set up
 
-### [tutorial](https://developer.spotify.com/documentation/web-api/howtos/web-app-profile)
+## Create a random playlist based on a selected genre
 
-### bootstrap for css
+### TODO: improve css and make some validations, add weekly songs to the sample of tracks to make it more random maybe, use third party apis to have more tracks to the sample
